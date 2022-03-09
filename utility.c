@@ -6,7 +6,6 @@ void create_MPI_mutant_type(MPI_Datatype *mutantType){
 	MPI_Datatype type[4] = { MPI_INT , MPI_DOUBLE , MPI_INT , MPI_INT };
     int blocklen[4] = { 1, 1, 1, 1};
     MPI_Aint disp[4];
-    //disp[0] = (char *) &mutant.seq -	 (char *) &mutant;
     disp[0] = (char *) &mutant.offset -	 (char *) &mutant;
     disp[1] = (char *) &mutant.score - (char *) &mutant;
     disp[2] = (char *) &mutant.mut_start - (char *) &mutant;
@@ -83,10 +82,8 @@ void readSequence(FILE *file,char** seq,int* size_of_seq_i){											//read se
 
 void prepareMutants(Mutant** mutants,int n,int* num_of_mutants_pointer){
 	int num_of_mutants = (((n)*(n-1))/ 2 );											//num of mutants in seq is nC2= n*(n-1)/2																	
-	//int offsets = end-start;
 	
 	*(num_of_mutants_pointer) = num_of_mutants;
-	//printf("here ok\n");
 	*mutants = (Mutant*)malloc(num_of_mutants*sizeof(Mutant));									//allocate mutants array
 	if(!(*mutants)){
 		fprintf(stderr, "Mutants Array Allocation Error\n");
@@ -100,7 +97,6 @@ void prepareMutants(Mutant** mutants,int n,int* num_of_mutants_pointer){
 
 void fillMutants(Mutant* mutant_array,int n){
 	int index = 0;
-	//for (int i = start; i < end; ++i) {
 	int counter1 = 0;
 	int counter2 = 1;
 	while(counter1!=n){
@@ -113,7 +109,6 @@ void fillMutants(Mutant* mutant_array,int n){
 			counter1++;
 			counter2++;
 		}
-	//}
 }
 
 
