@@ -87,7 +87,6 @@ __device__ int semi_conservative_check(char c1,char c2){
 
 __host__ void get_max(Mutant* mutants,int all_mutants_size,Mutant* pointer_best){
 	Mutant best = mutants[0];
-	//printf("here mate?\n");
 	for (int i = 1; i < all_mutants_size; ++i){
 	   if(mutants[i].score > best.score){
 	   	best = mutants[i];
@@ -105,7 +104,7 @@ void CUDA(Mutant* all_mutants_in_offset,int all_mutants_size,char* seq1,char* se
     // Error code to check return values for CUDA calls
     cudaError_t err = cudaSuccess;
 
-    //size_t size = all_mutants_size * sizeof(int);
+    
     //printf("arraived to cuda\n");
     Mutant *cuda_mutants;
     char* cuda_seq1;
@@ -175,9 +174,9 @@ void CUDA(Mutant* all_mutants_in_offset,int all_mutants_size,char* seq1,char* se
     int blocksPerGrid = (all_mutants_size + threadsPerBlock - 1) / threadsPerBlock;
   
     start_calculation<<<blocksPerGrid, threadsPerBlock>>>(cuda_mutants, all_mutants_size, cuda_seq1,cuda_seq2,cuda_weights,seq2_size-1);
-    //printf("score %lf\n",cuda_mutants[0].score);
     
-    //printf("here tits\n");
+    
+    
     
     err = cudaGetLastError();
     if (err != cudaSuccess) {
@@ -221,7 +220,7 @@ void CUDA(Mutant* all_mutants_in_offset,int all_mutants_size,char* seq1,char* se
     }
     
     
-   //printf("here maaaaann\n");
+   
     
 }
 
