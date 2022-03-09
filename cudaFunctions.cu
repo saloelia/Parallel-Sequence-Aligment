@@ -1,7 +1,6 @@
 #include <cuda_runtime.h>
 #include <helper_cuda.h>
 #include <cuda.h>
-//#include "calculation.h"
 #include "cudaFunctions.h"
 
 __global__  void start_calculation(Mutant* mutants, int all_mutant_size, char* seq1, char* seq2, double* weights,int seq2_size) {
