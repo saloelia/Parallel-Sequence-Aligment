@@ -1,0 +1,5 @@
+For Sequence Number 1, the best score is 272.000000 , offset=363 ,MS(85,137)
+For Sequence Number 2, the best score is 2382.900000 , offset=128 ,MS(177,1202)
+For Sequence Number 3, the best score is 339.400000 , offset=858 ,MS(0,208)
+For Sequence Number 4, the best score is 750.000000 , offset=975 ,MS(209,376)
+Time of calculation 0.675675 minutes
