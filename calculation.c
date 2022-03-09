@@ -29,9 +29,6 @@ void get_scores(double* weights,char* seq1,char** seqs,int* sizes,int num_of_seq
 		}else{
 			MPI_Send(&myBestMutant,1,MutantMPIType,0,0,MPI_COMM_WORLD);
 		}
-
-	//if(rank==0)
-	//	printf("finished seq %d\n",i+1);
 	}
 }
 
@@ -59,8 +56,6 @@ void useOpenMp_CUDA(int start,int end,char* seq1,char* seq2,double* weights,Muta
 		}
 
 	}
-	//printf("i am %d, my max is %lf %d %d %d\n",omp_get_thread_num(),best_of_each_thread[omp_get_thread_num()].score,best_of_each_thread[omp_get_thread_num()].offset,best_of_each_thread[omp_get_thread_num()].mut_start,best_of_each_thread[omp_get_thread_num()].mut_end);
-	
 	free(all_mutants_in_offset);
 	}
 	max_in_thread_array(best_of_each_thread,bestMutant);
